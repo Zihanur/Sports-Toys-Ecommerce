@@ -4,10 +4,20 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const {handleCreateUser} = useContext(AuthContext)
-  const handleLogin = event =>{
-    event.preventDefault()
-  }
+  const { logIn } = useContext(AuthContext);
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    //login function
+    logIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      form.reset();
+    });
+  };
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
@@ -46,10 +56,15 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
               <p>
-                Are you new?<Link to={"/register"} className="text-blue-600">Register</Link>
+                Are you new?
+                <Link to={"/register"} className="text-blue-600">
+                  Register
+                </Link>
               </p>
               <div className="text-center">
-                <button ><FaGoogle style={{height:25, width:25}}/></button>
+                <button>
+                  <FaGoogle style={{ height: 25, width: 25 }} />
+                </button>
               </div>
             </form>
           </div>
