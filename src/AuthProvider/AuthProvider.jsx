@@ -31,17 +31,20 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleLogIn = () => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   //current user find
   useEffect(() => {
-    onAuthStateChanged(auth, (loggedUser) => {
+    const unsubcribe = onAuthStateChanged(auth, (loggedUser) => {
       console.log("Current User: ", loggedUser);
       setUser(loggedUser);
       setLoading(false);
     });
+    return () => {
+      unsubcribe();
+    };
   }, []);
 
   //log out function
@@ -53,6 +56,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    setLoading,
     createUser,
     logIn,
     googleLogIn,
