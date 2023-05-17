@@ -5,11 +5,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -25,6 +28,11 @@ const AuthProvider = ({ children }) => {
   const logIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const googleLogIn = () => {
+    setLoading(true)
+    return signInWithPopup(auth, googleProvider);
   };
 
   //current user find
@@ -47,6 +55,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     logIn,
+    googleLogIn,
     logOut,
   };
 

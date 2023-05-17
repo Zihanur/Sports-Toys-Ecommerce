@@ -4,7 +4,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { logIn } = useContext(AuthContext);
+  const { logIn, googleLogIn } = useContext(AuthContext);
+
+  //login with email and password
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,6 +19,18 @@ const Login = () => {
       console.log(user);
       form.reset();
     });
+  };
+
+  //login with Google
+  const handleGoogleLogIn = () => {
+    googleLogIn()
+    .then(result=>{
+      const user = result.user;
+      console.log(user)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
   };
   return (
     <>
@@ -62,7 +76,7 @@ const Login = () => {
                 </Link>
               </p>
               <div className="text-center">
-                <button>
+                <button onClick={handleGoogleLogIn}>
                   <FaGoogle style={{ height: 25, width: 25 }} />
                 </button>
               </div>
