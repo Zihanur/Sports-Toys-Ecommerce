@@ -1,20 +1,27 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
+  const {handleCreateUser} = useContext(AuthContext)
+  const handleLogin = event =>{
+    event.preventDefault()
+  }
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content grid grid-cols-1 ">
           <div className="card flex-shrink-0 w-full mx-auto max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form className="card-body" onSubmit={handleLogin}>
               <h1 className="text-center text-2xl font-bold">Login</h1>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
                   placeholder="email"
                   className="input input-bordered"
                 />
@@ -24,7 +31,8 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
