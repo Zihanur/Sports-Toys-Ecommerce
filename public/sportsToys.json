@@ -3,21 +3,18 @@
     "category_name": "Cricket",
     "categories": [
       {
-        "_id": 1,
         "image": "football1.jpg",
         "sub_name": "Bat",
         "price": 14.99,
         "rating": 5
       },
       {
-        "_id": 2,
         "image": "football2.jpg",
         "sub_name": "Ball",
         "price": 17.99,
         "rating": 5
       },
       {
-        "_id": 3,
         "image": "football3.jpg",
         "sub_name": "Stumps",
         "price": 19.99,
@@ -29,21 +26,18 @@
     "category_name": "Football",
     "categories": [
       {
-        "_id": 1,
         "image": "football1.jpg",
         "sub_name": "Youth",
         "price": 34.99,
         "rating": 4
       },
       {
-        "_id": 2,
         "image": "football2.jpg",
         "sub_name": "Training",
         "price": 27.99,
         "rating": 5
       },
       {
-        "_id": 3,
         "image": "football3.jpg",
         "namsub_name": "Official",
         "price": 59.99,
