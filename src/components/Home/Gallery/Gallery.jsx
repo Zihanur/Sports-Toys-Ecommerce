@@ -1,7 +1,7 @@
 const Gallery = () => {
   return (
     <div className="w-5/6 mx-auto">
-      <h1 className="text-2xl text-blue-600 font-bold text-center mt-4">Toys Gallery</h1>
+      <h1 className="text-3xl font-bold text-center mt-4">Toys Gallery</h1>
       <hr className="border border-black mb-3"/>
       <div className="carousel w-full">
         <div id="item1" className="carousel-item w-full">
