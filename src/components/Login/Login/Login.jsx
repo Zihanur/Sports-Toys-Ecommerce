@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
@@ -6,6 +6,9 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Login = () => {
   const { logIn, googleLogIn } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/";
 
   //login with email and password
   const handleLogin = (event) => {
@@ -13,12 +16,13 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    setError("")
     //login function
     logIn(email, password)
       .then((result) => {
         const user = result.user;
         setError("");
+        navigate(from,{replace:true})
         console.log(user);
         form.reset();
       })
@@ -88,7 +92,7 @@ const Login = () => {
                   <FaGoogle style={{ height: 25, width: 25 }} />
                 </button>
               </div>
-              <p className="text-danger fs-6">{error}</p>
+              <p className="text-orange-600 fs-6">{error}</p>
             </form>
           </div>
         </div>

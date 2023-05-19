@@ -13,7 +13,7 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
+    setError("")
     //user create function
     createUser(email, password)
       .then((result) => {
@@ -96,7 +96,7 @@ const Register = () => {
                   Login
                 </Link>
               </p>
-              <p className="text-danger fs-6">{error}</p>
+              <p className="text-orange-600 fs-6">{error}</p>
             </form>
           </div>
         </div>

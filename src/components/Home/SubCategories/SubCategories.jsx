@@ -3,7 +3,10 @@ import "react-tabs/style/react-tabs.css";
 
 const SubCategories = ({ category }) => {
   console.log(category);
-  const { sub_name, image, price, rating } = category;
+  const { _id, sub_name, image, price, rating } = category;
+  const handleToyDetails=(_id)=>{
+    console.log(_id,"Btn clicked")
+  }
   return (
     <>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -15,7 +18,14 @@ const SubCategories = ({ category }) => {
           <p>Price: {price}</p>
           <p>Rating: {rating}</p>
           <div className="card-actions justify-end">
-            <Link to={'/toydetails'}><button className="btn btn-primary">View Details</button></Link>
+            <Link to={"/toydetails"}>
+              <button
+                onClick={() => handleToyDetails(_id)}
+                className="btn btn-primary"
+              >
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
       </div>
