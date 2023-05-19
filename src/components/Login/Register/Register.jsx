@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Register = () => {
   const { createUser, addUserNameImg } = useContext(AuthContext);
+  const [error, setError] =useState("");
+
   const handleCreateUser = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,10 +26,12 @@ const Register = () => {
         .catch(error=>{
           console.log(error)
         })
+        setError("")
         form.reset();
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message)
       });
   };
   return (
@@ -92,6 +96,7 @@ const Register = () => {
                   Login
                 </Link>
               </p>
+              <p className="text-danger fs-6">{error}</p>
             </form>
           </div>
         </div>

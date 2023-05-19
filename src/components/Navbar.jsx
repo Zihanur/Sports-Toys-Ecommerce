@@ -46,12 +46,30 @@ const Navbar = () => {
               <li>
                 <Link to={"/blogs"}>Blogs</Link>
               </li>
-              <li>
-                <Link to={"/login"}>Login</Link>
-              </li>
+              {user ? (
+                <>
+                  <li>
+                    <Link to={"/mytoys"}>My Toys</Link>
+                  </li>
+                  <li>
+                    <Link to={"/addatoy"}>Add A Toys</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to={"/login"}>Login</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
-          <Link to={'/'} className="btn btn-ghost normal-case text-blue-500 text-4xl font-extrabold">Sports Toys</Link>
+          <Link
+            to={"/"}
+            className="btn btn-ghost normal-case text-blue-500 text-4xl font-extrabold"
+          >
+            Sports Toys
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const { logIn, googleLogIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   //login with email and password
   const handleLogin = (event) => {
@@ -14,11 +15,16 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     //login function
-    logIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      form.reset();
-    });
+    logIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        setError("");
+        console.log(user);
+        form.reset();
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   //login with Google
@@ -26,10 +32,12 @@ const Login = () => {
     googleLogIn()
       .then((result) => {
         const user = result.user;
+        setError("");
         console.log(user);
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
   };
   return (
@@ -80,6 +88,7 @@ const Login = () => {
                   <FaGoogle style={{ height: 25, width: 25 }} />
                 </button>
               </div>
+              <p className="text-danger fs-6">{error}</p>
             </form>
           </div>
         </div>
