@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -47,6 +48,14 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  //added user name and photo
+  const addUserNameImg = (name,photo)=>{
+    return updateProfile(auth.currentUser,{
+      displayName: name,
+      photoURL: photo
+    })
+  }
+
   //log out function
   const logOut = () => {
     setLoading(true);
@@ -62,6 +71,7 @@ const AuthProvider = ({ children }) => {
     logIn,
     googleLogIn,
     logOut,
+    addUserNameImg,
   };
 
   return (

@@ -2,7 +2,7 @@
 const AllToys = () => {
   return (
     <div>
-      All toys
+      
     </div>
   );
 };
