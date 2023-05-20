@@ -1,6 +1,6 @@
 const Gallery = () => {
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="w-4/5 mx-auto my-6">
       <h1 className="text-3xl font-bold text-center mt-4">Toys Gallery</h1>
         <hr className="border border-black mb-3" />
       <div className="carousel w-full">
