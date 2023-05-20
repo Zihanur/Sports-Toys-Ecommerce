@@ -9,9 +9,27 @@ const AllToys = () => {
   const handleShowMore = () => {
     setShowall(!showall);
   };
+
+  const searchToy = (event) => {
+    event.preventDefault();
+    const toy_name = event.target.name.value;
+    console.log(toy_name);
+  };
   return (
     <div>
       <h2 className="text-center text-3xl font-bold my-4">All Toys</h2>
+      {/* search bar */}
+      <form className="relative w-2/3 mx-auto my-4" onSubmit={searchToy}>
+        <input
+          type="text"
+          name="name"
+          placeholder="toy name"
+          className="input input-bordered w-full pr-16"
+        />
+        <button className="btn absolute top-0 right-0 rounded-l-none">
+          Search Toy
+        </button>
+      </form>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head*/}
@@ -27,19 +45,15 @@ const AllToys = () => {
           </thead>
           {showall ? (
             <>
-              {
-                allToys.map((toy) => (
-                  <Toy key={toy._id} toy={toy}></Toy>
-                  ))
-              }
+              {allToys.map((toy) => (
+                <Toy key={toy._id} toy={toy}></Toy>
+              ))}
             </>
           ) : (
             <>
-              {
-                allToys.slice(0,20).map((toy) => (
-              <Toy key={toy._id} toy={toy}></Toy>
-              ))
-              }
+              {allToys.slice(0, 20).map((toy) => (
+                <Toy key={toy._id} toy={toy}></Toy>
+              ))}
             </>
           )}
         </table>

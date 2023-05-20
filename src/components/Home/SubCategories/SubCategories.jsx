@@ -1,16 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const SubCategories = ({ category }) => {
-  const { user } = useContext(AuthContext);
   const { _id, sub_name, image, price, rating } = category;
-
-  const handleToyDetails = (_id) => {
-    console.log(_id, "Btn clicked");
-    console.log(user);
-  };
 
   return (
     <>
@@ -23,13 +15,8 @@ const SubCategories = ({ category }) => {
           <p>Price: {price}</p>
           <p>Rating: {rating}</p>
           <div className="card-actions justify-end">
-            <Link to={"/toydetails"}>
-              <button
-                onClick={() => handleToyDetails(_id)}
-                className="btn btn-primary"
-              >
-                View Details
-              </button>
+            <Link to={`/toydetails/${_id}`}>
+              <button className="btn btn-primary">View Details</button>
             </Link>
           </div>
         </div>
