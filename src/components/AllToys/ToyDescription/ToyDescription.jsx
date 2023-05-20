@@ -6,7 +6,7 @@ const ToyDescription = () => {
   const { seller, toy_name, price, quantity, details, email, img, rating } =
     toy;
   return (
-    <div>
+    <div className="my-4 mx-4 lg:mx-16">
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <h1 className="text-5xl font-bold">{toy_name} details</h1>
@@ -33,7 +33,7 @@ const ToyDescription = () => {
                 <strong>Rating:</strong> {rating}
               </p>
             </div>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary">Buy Now</button>
           </div>
         </div>
       </div>

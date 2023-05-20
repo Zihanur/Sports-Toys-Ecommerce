@@ -7,7 +7,7 @@ const Login = () => {
   const { logIn, googleLogIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   //login with email and password
@@ -16,13 +16,13 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    setError("")
+    setError("");
     //login function
     logIn(email, password)
       .then((result) => {
         const user = result.user;
         setError("");
-        navigate(from,{replace:true})
+        navigate(from, { replace: true });
         console.log(user);
         form.reset();
       })
@@ -46,7 +46,7 @@ const Login = () => {
   };
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
+      <div className=" min-h-screen bg-base-200">
         <div className="hero-content grid grid-cols-1 ">
           <div className="card flex-shrink-0 w-full mx-auto max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleLogin}>
@@ -60,6 +60,7 @@ const Login = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -71,6 +72,7 @@ const Login = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
