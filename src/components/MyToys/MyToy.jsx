@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const MyToy = ({ toy }) => {
+const MyToy = ({ toy, handleDelete }) => {
   const {
     _id,
     seller,
@@ -12,17 +12,6 @@ const MyToy = ({ toy }) => {
     email,
     details,
   } = toy;
-
-  const handleDelete = (id) => {
-    console.log(id);
-    fetch(`http://localhost:5000/mytoys/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
 
   return (
     <tbody>
@@ -53,15 +42,12 @@ const MyToy = ({ toy }) => {
           </div>
         </th>
         <td className="">
-          <Link>
+          <Link to={`/updatetoy/${_id}`}>
             <button className="btn btn-primary me-1">Edit</button>
-            <button
-              className="btn btn-primary"
-              onClick={() => handleDelete(_id)}
-            >
-              Delete
-            </button>
           </Link>
+          <button className="btn btn-primary" onClick={() => handleDelete(_id)}>
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

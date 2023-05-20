@@ -39,7 +39,7 @@ const Blogs = () => {
                 token.
               </p>
               <h1 className="font-bold">Work:</h1>
-              <p>
+              <div>
                 <ul>
                   <li>User send request for Token.</li>
                   <li>Database send token and save this user information.</li>
@@ -52,7 +52,7 @@ const Blogs = () => {
                     token
                   </li>
                 </ul>
-              </p>
+              </div>
               </div>
             </div>
           )}

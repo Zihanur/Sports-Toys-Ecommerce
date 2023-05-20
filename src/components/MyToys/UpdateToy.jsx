@@ -1,10 +1,13 @@
 import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-const AddAToy = () => {
+const UpdateToy = () => {
+  const updateToy = useLoaderData();
   const { user } = useContext(AuthContext);
+  const { _id, toy_name, img } = updateToy;
 
-  const handleAddToy = (event) => {
+  const handleUpdateToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const toy_name = form.toy.value;
@@ -16,18 +19,8 @@ const AddAToy = () => {
     const quantity = form.quantity.value;
     const rating = form.rating.value;
     const details = form.description.value;
-    console.log(
-      toy_name,
-      img,
-      sub_category,
-      seller,
-      email,
-      price,
-      quantity,
-      rating,
-      details
-    );
-    const newToy = {
+
+    const updateToy = {
       toy_name,
       img,
       sub_category,
@@ -38,18 +31,18 @@ const AddAToy = () => {
       rating,
       details,
     };
-    fetch("http://localhost:5000/mytoys", {
-      method: "POST",
+    fetch(`http://localhost:5000/mytoys/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newToy),
+      body: JSON.stringify(updateToy),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
-          alert("Added Sports Toy");
+        if (data.modifiedCount > 0) {
+          alert("Updated");
           form.reset();
         }
       });
@@ -60,12 +53,13 @@ const AddAToy = () => {
       <div className=" min-h-screen bg-base-300">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body" onSubmit={handleAddToy}>
-              <h1 className="text-center text-2xl font-bold">Add Sports Toy</h1>
+            <form className="card-body" onSubmit={handleUpdateToy}>
+              <h1 className="text-center text-2xl font-bold">Update Toy</h1>
               <div className="form-control">
                 <input
                   type="text"
                   name="toy"
+                  defaultValue={toy_name}
                   placeholder="Toy Name"
                   className="input input-bordered"
                   required
@@ -75,6 +69,7 @@ const AddAToy = () => {
                 <input
                   type="text"
                   name="photo"
+                  defaultValue={img}
                   placeholder="Toy Photo URL"
                   className="input input-bordered"
                   required
@@ -102,7 +97,7 @@ const AddAToy = () => {
                   type="email"
                   name="email"
                   placeholder="Seller Email"
-                  defaultValue={user.email}
+                  defaultValue={user?.email}
                   className="input input-bordered"
                   required
                 />
@@ -157,4 +152,4 @@ const AddAToy = () => {
   );
 };
 
-export default AddAToy;
+export default UpdateToy;

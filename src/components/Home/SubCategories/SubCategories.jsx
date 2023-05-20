@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const SubCategories = ({ category }) => {
-  console.log(category);
+  const { user } = useContext(AuthContext);
   const { _id, sub_name, image, price, rating } = category;
-  const handleToyDetails=(_id)=>{
-    console.log(_id,"Btn clicked")
-  }
+
+  const handleToyDetails = (_id) => {
+    console.log(_id, "Btn clicked");
+    console.log(user);
+  };
+
   return (
     <>
       <div className="card w-96 bg-base-100 shadow-xl">
