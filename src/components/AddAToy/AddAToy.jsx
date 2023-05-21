@@ -102,7 +102,7 @@ const AddAToy = () => {
                   type="email"
                   name="email"
                   placeholder="Seller Email"
-                  defaultValue={user.email}
+                  defaultValue={user?.email}
                   className="input input-bordered"
                   required
                 />

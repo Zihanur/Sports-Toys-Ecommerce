@@ -4,12 +4,14 @@ import { useState } from "react";
 
 const AllToys = () => {
   const allToys = useLoaderData();
+  console.log(allToys);
   const [showall, setShowall] = useState(false);
 
   const handleShowMore = () => {
     setShowall(!showall);
   };
 
+  //search by toy name function
   const searchToy = (event) => {
     event.preventDefault();
     const toy_name = event.target.name.value;
@@ -18,6 +20,7 @@ const AllToys = () => {
   return (
     <div>
       <h2 className="text-center text-3xl font-bold my-4">All Toys</h2>
+
       {/* search bar */}
       <form className="relative w-2/3 mx-auto my-4" onSubmit={searchToy}>
         <input
@@ -30,6 +33,8 @@ const AllToys = () => {
           Search Toy
         </button>
       </form>
+
+      {/* all toys table */}
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head*/}

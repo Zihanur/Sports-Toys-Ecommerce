@@ -90,9 +90,10 @@ const Login = () => {
                   Register
                 </Link>
               </p>
-              <div className="text-center">
-                <button onClick={handleGoogleLogIn}>
-                  <FaGoogle style={{ height: 25, width: 25 }} />
+              <div className="form-control mt-6">
+                <button onClick={handleGoogleLogIn} className="btn btn-primary">
+                  <FaGoogle style={{ height: 20, width: 20 }} className="me-2" />
+                   Login with Google
                 </button>
               </div>
               <p className="text-orange-600 fs-6">{error}</p>
