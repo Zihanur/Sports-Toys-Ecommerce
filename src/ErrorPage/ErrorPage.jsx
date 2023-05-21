@@ -12,7 +12,7 @@ const ErrorPage = () => {
           className="rounded-xl shadow-lg"
         />
       }
-      <p className="text-error">Error: {error?.statusText || error?.message}</p>
+      <p className="text-error">Error: {error.statusText || error.message}</p>
       <Link to={"/"} className="btn btn-primary">
         Back Home
       </Link>

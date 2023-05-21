@@ -8,4 +8,4 @@
 - User can added toy for sale and update and delete this.
 - Blogs page have some blogs.
 
-Live Link :[Live](url)
+Live Link :[Live](https://sports-toys.web.app/)
