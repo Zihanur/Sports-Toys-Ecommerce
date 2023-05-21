@@ -18,17 +18,23 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/toys"),
+        loader: () =>
+          fetch(
+            "https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/toys"
+          ),
       },
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/alltoys"),
+        loader: () =>
+          fetch(
+            "https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/alltoys"
+          ),
       },
       {
         path: "/toys/:id",
@@ -38,7 +44,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/alltoys/${params.id}`),
+          fetch(
+            `https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/alltoys/${params.id}`
+          ),
       },
       {
         path: "/blogs",
@@ -59,7 +67,10 @@ const router = createBrowserRouter([
             <MyToys></MyToys>
           </PrivateRouter>
         ),
-        loader: () => fetch("http://localhost:5000/mytoys"),
+        loader: () =>
+          fetch(
+            "https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/mytoys"
+          ),
       },
       {
         path: "/addatoy",
@@ -85,7 +96,9 @@ const router = createBrowserRouter([
         path: "/updatetoy/:id",
         element: <UpdateToy></UpdateToy>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/mytoys/${params.id}`),
+          fetch(
+            `https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/mytoys/${params.id}`
+          ),
       },
     ],
   },

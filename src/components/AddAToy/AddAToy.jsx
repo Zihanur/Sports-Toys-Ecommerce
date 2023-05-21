@@ -38,13 +38,16 @@ const AddAToy = () => {
       rating,
       details,
     };
-    fetch("http://localhost:5000/mytoys", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newToy),
-    })
+    fetch(
+      "https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/mytoys",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newToy),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

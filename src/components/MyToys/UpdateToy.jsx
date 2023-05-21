@@ -31,13 +31,16 @@ const UpdateToy = () => {
       rating,
       details,
     };
-    fetch(`http://localhost:5000/mytoys/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateToy),
-    })
+    fetch(
+      `https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/mytoys/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateToy),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

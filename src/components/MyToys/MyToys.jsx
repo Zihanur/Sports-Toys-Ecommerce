@@ -9,9 +9,12 @@ const MyToys = () => {
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/mytoys/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://b7a11-toy-marketplace-server-side-zihanur.vercel.app/mytoys/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
