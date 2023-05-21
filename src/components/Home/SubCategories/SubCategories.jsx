@@ -1,8 +1,18 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const SubCategories = ({ category }) => {
+  const { user } = useContext(AuthContext);
   const { _id, sub_name, image, price, rating } = category;
+
+  //visew details btn after login alert
+  const dandleAlart = () => {
+    if (user == null) {
+      alert("You have to log in first to view details")
+    }
+  };
 
   return (
     <>
@@ -16,7 +26,9 @@ const SubCategories = ({ category }) => {
           <p>Rating: {rating}</p>
           <div className="card-actions justify-end">
             <Link to={`/toydetails/${_id}`}>
-              <button className="btn btn-primary">View Details</button>
+              <button className="btn btn-primary" onClick={dandleAlart}>
+                View Details
+              </button>
             </Link>
           </div>
         </div>
